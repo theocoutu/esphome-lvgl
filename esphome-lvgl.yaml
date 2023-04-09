@@ -1,7 +1,7 @@
 esphome:
   name: esphome-lvgl
   platform: ESP32
-  board: lolin_d32_pro
+  board: esp32dev
 
   # Include customized header files for TFT_eSPI, LVGL components and the demo UI
   includes:
@@ -32,15 +32,15 @@ esphome:
       - "-D USER_SETUP_LOADED=1"
       - "-D ILI9341_DRIVER=1"
       # - "-D SUPPORT_TRANSACTIONS ; Default on ESP32"
-      - "-D TFT_WIDTH=240"
-      - "-D TFT_HEIGHT=320"
-      - "-D TFT_ROTATION=0 ; Use default, see TFT_ROTATION values"
-      - "-D TFT_MISO=19"
-      - "-D TFT_MOSI=23"
-      - "-D TFT_SCLK=18"
-      - "-D TFT_BCKL=32  ; Configurable via web UI (default 32)"
-      - "-D TOUCH_CS=12  ; Default for TFT connector"
-      - "-D TOUCH_CAL_DATA=268,3553,383,3532,6  ; Touch Calibration Data"
+      - "-D TFT_WIDTH=320"
+      - "-D TFT_HEIGHT=240"
+      - "-D TFT_ROTATION=1 ; Use default, see TFT_ROTATION values"
+      - "-D TFT_MISO=13"
+      - "-D TFT_MOSI=14"
+      - "-D TFT_SCLK=13"
+      - "-D TFT_BCKL=2  ; Configurable via web UI (default 32)"
+      - "-D TOUCH_CS=33  ; Default for TFT connector"
+      - "-D TOUCH_CAL_DATA=242,123,3783,3748,6  ; Touch Calibration Data"
       - "-D SPI_FREQUENCY=40000000"
       - "-D SPI_TOUCH_FREQUENCY=2500000"
       - "-D SPI_READ_FREQUENCY=20000000"
@@ -74,10 +74,10 @@ i2c:
 
 # Enable Home Assistant API
 api:
-  password: !secret esplibapi_password
+#  password: !secret esplibapi_password
 
-# ota:
-#   password: ""
+ota:
+#  password: ''
 
 web_server:
   port: 80
